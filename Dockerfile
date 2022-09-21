@@ -10,12 +10,13 @@ ENV PATH /app/node_modules/.bin:$PATH
 # install app dependencies
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm install --silent
 
 # add app
 COPY . ./
 
-CMD ["npm", "build"]
+RUN npm install --silent
+RUN npm run build
 
+EXPOSE 3000
 # start app
 CMD ["npm", "start"]
